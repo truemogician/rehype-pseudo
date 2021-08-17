@@ -2,9 +2,11 @@
 	"name": "rehype-pseudo",
 	"version": "1.0.0",
 	"description": "",
-	"main": "index.ts",
+	"main": "index.js",
 	"scripts": {
-		"test": "node --loader ts-node/esm test/render.test.ts"
+		"test": "node --loader ts-node/esm test/render.test.ts",
+		"build": "tsc -p tsconfig.json",
+		"prepublish": "npm run build"
 	},
 	"author": "true_mogician",
 	"license": "MIT",
