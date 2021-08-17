@@ -8,8 +8,16 @@
 		"build": "tsc -p tsconfig.json",
 		"prepublish": "npm run build"
 	},
-	"author": "true_mogician",
+	"author": {
+		"name": "true_mogician",
+		"email": "truemogician@gmail.com",
+		"url": "https://www.truemogician.com:1926"
+	},
 	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/truemogician/rehype-pseudo.git"
+	},
 	"type": "module",
 	"dependencies": {
 		"basic-type-extensions": "^1.13.1",
