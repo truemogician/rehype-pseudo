@@ -1,0 +1,28 @@
+{
+	"name": "rehype-pseudo",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.ts",
+	"scripts": {
+		"test": "node --loader ts-node/esm test/render.test.ts"
+	},
+	"author": "true_mogician",
+	"license": "MIT",
+	"type": "module",
+	"dependencies": {
+		"basic-type-extensions": "^1.13.1",
+		"hast-util-to-string": "^2.0.0",
+		"pseudocode": "^2.2.0",
+		"rehype-parse": "^8.0.2",
+		"type-fest": "^2.0.0",
+		"unified": "^10.1.0",
+		"unist-util-visit": "^3.1.0"
+	},
+	"devDependencies": {
+		"rehype-stringify": "^9.0.1",
+		"remark-parse": "^10.0.0",
+		"remark-rehype": "^9.0.0",
+		"to-vfile": "^7.2.1",
+		"ts-node": "^10.2.0"
+	}
+}
