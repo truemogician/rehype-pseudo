@@ -60,18 +60,23 @@ function renderToString(input: string, options?: PseudoOptions): string {
 
 const rehypePseudo: Plugin<[PseudoOptions?], Root, Root> = function (options): Transformer<Root, Root> {
 	const parser = unified().use(parseHtml, { fragment: true });
-	return root => visit(root, "element", (element: Element) => {
-		if (element.tagName != "code" || !(element.properties?.className as (string[] | undefined))?.includes("language-pseudo"))
+	return root => visit(root, "element", (element: Element, index, parent) => {
+		if (element.tagName != "pre" || element.children.length != 1)
+			return;
+		if (element.children[0].type != "element")
+			return;
+		const target = element.children[0] as Element;
+		if (target.tagName != "code" || !(target.properties?.className as (string[] | undefined))?.includes("language-pseudo"))
 			return;
 		try {
-			const markup = renderToString(htmlAstToString(element), options);
+			const markup = renderToString(htmlAstToString(target), options);
 			const dom = parser.parse(markup) as unknown as Element;
-			element.children
-			Object.innerAssign(element, {
+			Object.innerAssign(target, {
 				children: dom.children,
-				properties: {},
-				tagName: "div"
 			});
+			parent!.children.remove(element);
+			parent!.children.push(target);
+			return "skip";
 		}
 		catch (error) {
 			console.log(error);
